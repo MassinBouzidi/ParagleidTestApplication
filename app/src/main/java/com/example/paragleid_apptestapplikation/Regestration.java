@@ -25,6 +25,7 @@ public class Regestration extends AppCompatActivity {
     Button btnRegestrieren;
     String KEY_NAME = "Name";
     String KEY_Passwort = "Passwort";
+    String KEY_EMAIL = "Email";
 
     FirebaseAuth firebaseAuth;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -68,7 +69,7 @@ public class Regestration extends AppCompatActivity {
                                 UploadData();
 
                             }else{
-                                Toast.makeText(Regestration.this, "Regestration unsuccesful", Toast.LENGTH_SHORT ).show();
+                                Toast.makeText(Regestration.this, "Registration unsuccesful", Toast.LENGTH_SHORT ).show(); // Bis jetzt ist eine Regestrierung nicht erfolgreich
                             }
                         }
                     });
@@ -81,6 +82,7 @@ public class Regestration extends AppCompatActivity {
 
         Map<String, Object> user = new HashMap<>();
         user.put(KEY_Passwort, Password);
+        user.put(KEY_EMAIL, EMail);
     }
 
 
