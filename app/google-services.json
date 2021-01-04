@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "695349337874",
+    "firebase_url": "https://paragleidapp-test-applikation.firebaseio.com",
+    "project_id": "paragleidapp-test-applikation",
+    "storage_bucket": "paragleidapp-test-applikation.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:695349337874:android:1d027a123dc45dcefb9dcb",
+        "android_client_info": {
+          "package_name": "com.example.paragleid_apptestapplikation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "695349337874-pkvmd7r1eu9nb5vflamgulsk5pg17oiu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.paragleid_apptestapplikation",
+            "certificate_hash": "ed5152459019e65fdc45a84d5513d883aa1183ac"
+          }
+        },
+        {
+          "client_id": "695349337874-5kffk1ls7sger77k1emq4sfvsm8o09n3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWjrof83WXay4Z6mAJHUynbFd49RZrAKI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "695349337874-5kffk1ls7sger77k1emq4sfvsm8o09n3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
