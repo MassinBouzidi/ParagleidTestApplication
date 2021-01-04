@@ -69,7 +69,7 @@ public class Regestration extends AppCompatActivity {
                                 UploadData();
 
                             }else{
-                                Toast.makeText(Regestration.this, "Registration unsuccesful", Toast.LENGTH_SHORT ).show(); // Bis jetzt ist eine Regestrierung nicht erfolgreich
+                                Toast.makeText(Regestration.this, "Registration unsuccesful", Toast.LENGTH_SHORT ).show(); //Bis jetzt ist eine Regestrierung nicht erfolgreich
                             }
                         }
                     });
