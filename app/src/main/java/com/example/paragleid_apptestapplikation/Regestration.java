@@ -10,9 +10,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -65,8 +68,9 @@ public class Regestration extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                Toast.makeText(Regestration.this, "Registration successful!", Toast.LENGTH_SHORT).show();
                                 UploadData();
+                                Toast.makeText(Regestration.this, "Registration successful!", Toast.LENGTH_SHORT).show();
+
 
                             }else{
                                 Toast.makeText(Regestration.this, "Registration unsuccesful", Toast.LENGTH_SHORT ).show(); //Bis jetzt ist eine Regestrierung nicht erfolgreich
@@ -83,6 +87,21 @@ public class Regestration extends AppCompatActivity {
         Map<String, Object> user = new HashMap<>();
         user.put(KEY_Passwort, Password);
         user.put(KEY_EMAIL, EMail);
+
+        db.collection("Users")
+                .add(user)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Toast.makeText(Regestration.this, "Data uploaded!", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(Regestration.this, "Could not upload data!", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
 
