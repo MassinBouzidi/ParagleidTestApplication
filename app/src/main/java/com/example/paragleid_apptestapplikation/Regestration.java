@@ -52,6 +52,25 @@ public class Regestration extends AppCompatActivity {
 
     }
 
+    public void CreateUser () {
+
+        String user_Email = EMail.getText().toString();
+        String user_Passwort = Password.getText().toString();
+
+        firebaseAuth.createUserWithEmailAndPassword(user_Email, user_Passwort).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    UploadData();
+                    Toast.makeText(Regestration.this, "Registration successful!", Toast.LENGTH_SHORT).show();
+
+
+                }else{
+                    Toast.makeText(Regestration.this, "Registration unsuccesful", Toast.LENGTH_SHORT ).show(); //Bis jetzt ist eine Regestrierung nicht erfolgreich
+                }
+            }
+        });
+    }
 
 
     public void SaveData () {  //TODO Bedingung soll mit einem Button OnClick anfangen.
@@ -60,23 +79,8 @@ public class Regestration extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(Regestration.this, "Button clicked!", Toast.LENGTH_SHORT).show();
+                CreateUser();
 
-                    String user_Email = EMail.getText().toString();
-                    String user_Passwort = Password.getText().toString();
-
-                    firebaseAuth.createUserWithEmailAndPassword(user_Email, user_Passwort).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                UploadData();
-                                Toast.makeText(Regestration.this, "Registration successful!", Toast.LENGTH_SHORT).show();
-
-
-                            }else{
-                                Toast.makeText(Regestration.this, "Registration unsuccesful", Toast.LENGTH_SHORT ).show(); //Bis jetzt ist eine Regestrierung nicht erfolgreich
-                            }
-                        }
-                    });
             }
         });
     }
@@ -95,13 +99,8 @@ public class Regestration extends AppCompatActivity {
                     public void onSuccess(DocumentReference documentReference) {
                         Toast.makeText(Regestration.this, "Data uploaded!", Toast.LENGTH_SHORT).show();
                     }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(Regestration.this, "Could not upload data!", Toast.LENGTH_SHORT).show();
-                    }
                 });
+
     }
 
 
