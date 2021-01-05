@@ -61,9 +61,9 @@ public class Regestration extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    UploadData();
-                    Toast.makeText(Regestration.this, "Registration successful!", Toast.LENGTH_SHORT).show();
 
+                    Toast.makeText(Regestration.this, "Registration successful!", Toast.LENGTH_SHORT).show(); // Daten werden in der Datenbank gespeichert
+                    UploadData();
 
                 }else{
                     Toast.makeText(Regestration.this, "Registration unsuccesful", Toast.LENGTH_SHORT ).show(); //Bis jetzt ist eine Regestrierung nicht erfolgreich
