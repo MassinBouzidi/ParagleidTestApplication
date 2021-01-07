@@ -63,7 +63,7 @@ public class Regestration extends AppCompatActivity {
                 if (task.isSuccessful()) {
 
                     Toast.makeText(Regestration.this, "Registration successful!", Toast.LENGTH_SHORT).show(); // Daten werden in der Datenbank gespeichert
-                    UploadData();
+
 
                 }else{
                     Toast.makeText(Regestration.this, "Registration unsuccesful", Toast.LENGTH_SHORT ).show(); //Bis jetzt ist eine Regestrierung nicht erfolgreich
@@ -83,24 +83,6 @@ public class Regestration extends AppCompatActivity {
 
             }
         });
-    }
-
-    public void UploadData() {
-
-
-        Map<String, Object> user = new HashMap<>();
-        user.put(KEY_Passwort, Password);
-        user.put(KEY_EMAIL, EMail);
-
-        db.collection("Users")
-                .add(user)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Toast.makeText(Regestration.this, "Data uploaded!", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
     }
 
 
