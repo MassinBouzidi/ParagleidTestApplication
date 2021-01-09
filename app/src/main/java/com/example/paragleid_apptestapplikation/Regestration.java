@@ -85,7 +85,7 @@ public class Regestration extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(Regestration.this, "Button clicked!", Toast.LENGTH_SHORT).show();
                 CreateUser();
-                SaveInFirestore();
+                SaveInFirestore(); //App crasht und Daten werden nicht gespeichert
 
             }
         });
