@@ -23,12 +23,16 @@ import java.util.Map;
 
 public class Regestration extends AppCompatActivity {
 
+    EditText Name;
+    EditText Adresse;
+    EditText Telefonnummer;
     EditText EMail;                // Fehlerursache beim Deklarieren der Variable
     EditText Password;  // Fehlerursache beim Deklarieren der Variable
     Button btnRegestrieren;
+
+    String KEY_TELEFONNUMMER;
     String KEY_NAME = "Name";
-    String KEY_Passwort = "Passwort";
-    String KEY_EMAIL = "Email";
+    String KEY_ADRESSE = "Adresse";
 
     FirebaseAuth firebaseAuth;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -43,6 +47,7 @@ public class Regestration extends AppCompatActivity {
     }
 
     public void Activity () {
+        Name = findViewById(R.id.editTextLogName);
         EMail = findViewById(R.id.EMail);
         Password = findViewById(R.id.editTextPassword);
         btnRegestrieren = findViewById(R.id.btnRegestration);
@@ -73,16 +78,32 @@ public class Regestration extends AppCompatActivity {
     }
 
 
-    public void SaveData () {  //TODO Bedingung soll mit einem Button OnClick anfangen.
+    public void SaveData () {
 
         btnRegestrieren.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(Regestration.this, "Button clicked!", Toast.LENGTH_SHORT).show();
                 CreateUser();
+                SaveInFirestore();
 
             }
         });
+    }
+
+    public void SaveInFirestore () {
+
+        String user_Name = Name.getText().toString();
+        String user_Adresse = Adresse.getText().toString();
+        String user_EMail = EMail.getText().toString();
+
+        Map<String, Object> user = new HashMap<>();
+        user.put(KEY_NAME, user_Name);
+        user.put(KEY_ADRESSE, user_Adresse);
+        user.put(KEY_TELEFONNUMMER, user_EMail);
+
+        db.collection("Users")
+                .add(user);
     }
 
 
